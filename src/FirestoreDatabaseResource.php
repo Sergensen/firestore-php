@@ -61,9 +61,7 @@ class FirestoreDatabaseResource
         $response = $this->client->request('GET', 'documents/' . FirestoreHelper::normalizeCollection($collection), $options, $parameters);
 
         if (isset($response['documents'])) {
-            $documents = array_map(function($doc) {
-                return new FirestoreDocument($doc);
-            }, $response['documents']);
+            $documents = $response['documents'];
         } else {
             $documents = [];
         }
